@@ -1,8 +1,8 @@
 ![tests](https://github.com/babymechanic/url-builder/actions/workflows/run-tests.yml/badge.svg)
 
-# url-builder
+# simple-url-builder
 
-A url builder which handles.
+A simple url builder which handles.
 
 - uri encoding
 - remove params which are null, undefined, [] or ''
@@ -12,9 +12,9 @@ A url builder which handles.
 Example:
 
 ```typescript
-import { UrlBuilder } from 'url-builder';
+import { SimpleUrlBuilder } from 'simple-url-builder';
 
-const url = new UrlBuilder('https://{host}/fruits')
+const url = new SimpleUrlBuilder('https://{host}/fruits')
   .addRouteParam('host', 'test.domain')
   .addQueryParam('date', new Date())
   .addQueryParam('ids', [1, 2])

@@ -1,5 +1,5 @@
-import UrlBuilder from './src/url-builder';
+import SimpleUrlBuilder from './src/simple-url-builder';
 
 export {
-  UrlBuilder
+  SimpleUrlBuilder
 }
