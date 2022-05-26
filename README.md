@@ -2,9 +2,9 @@
 
 # url-builder
 
-A type builder to build urls which handles.
+A url builder which handles.
 
-- url encoding
+- uri encoding
 - remove params which are null, undefined, [] or ''
 - check if mandatory route params are missing
 - convert Array, Date types into route params
