@@ -21,5 +21,8 @@ const url = new UrlBuilder('https://{host}/fruits')
   .addQueryParam('query', 'red')
   .addQueryParam('isAvailable', true)
   .build();
+
+// https://test.domain/fruits?date=2022-05-26T12%3A25%3A56.743Z&ids[0]=1&ids[1]=2&query=red&isAvailable=true
+console.log(url);
 ```
 
