@@ -1,14 +1,15 @@
 {
   "name": "simple-url-builder",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "license": "MIT",
+  "description": "A simple builder to construct urls",
   "repository": {
     "type": "git",
-    "url": "https://github.com/babymechanic/url-builder.git"
+    "url": "https://github.com/babymechanic/simple-url-builder.git"
   },
-  "homepage": "https://github.com/babymechanic/url-builder#readme",
+  "homepage": "https://github.com/babymechanic/simple-url-builder#readme",
   "keywords": [
     "query",
     "params",
