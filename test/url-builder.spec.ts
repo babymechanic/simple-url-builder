@@ -43,29 +43,6 @@ describe('UrlBuilder', () => {
     expect(() => builder.build()).to.throw(MissingRouteParamsError, expectedErrorMessage);
   });
 
-
-  [null, ''].forEach((testValue) => {
-
-    it(`should throw an error if ${JSON.stringify(testValue)} is passed as value for a route param`, function () {
-      const builder = new UrlBuilder('https://{host}/fruits').addRouteParam('host', testValue);
-
-      const expectedErrorMessage = 'Route still contains template params: https://{host}/fruits';
-      expect(() => builder.build()).to.throw(MissingRouteParamsError, expectedErrorMessage);
-    });
-
-  });
-
-  it(`should throw an error if  is passed as value for a route param`, function () {
-    const builder = new UrlBuilder('https://{host}/fruits').addRouteParam('host', null);
-
-    const expectedErrorMessage = 'Route still contains template params: https://{host}/fruits';
-    expect(() => {
-      const url = builder.build();
-      return url;
-    }).to.throw(MissingRouteParamsError, expectedErrorMessage);
-  });
-
-
   it('should ignore null query params', function () {
     const builder = new UrlBuilder('https://test.domain/fruits')
       .addQueryParam('date', null)
@@ -87,5 +64,17 @@ describe('UrlBuilder', () => {
     expect(url).to.equal('https://test.domain/fruits?colour=red&id=1');
   });
 
+  [
+    {value: null, display: 'null'},
+    {value: undefined, display: 'undefined'},
+    {value: '', display: 'empty string'}
+  ].forEach((testData) => {
+    it(`should throw an error if ${testData.display} is passed as value for a route param`, function () {
 
+      const builder = new UrlBuilder('https://{host}/fruits')
+        .addRouteParam('host', testData.value);
+
+      expect(() => builder.build()).to.throw('Route still contains template params: https://{host}/fruits');
+    });
+  });
 });

@@ -5,13 +5,14 @@ const convertToString = (value: string | number | Date | boolean): string => {
   return encodeURIComponent(value.toString());
 }
 
-const templateRegEx = /\{.+\}/gm;
 
 type ParamValues = string | number | Date | undefined | null | boolean;
 
 export default class UrlBuilder {
   private readonly routeParams: { [i: string]: string };
   private readonly queryParams: { [i: string]: string };
+  private static readonly templateRegEx = /\{[a-zA-z\d]+\}/;
+
 
   constructor(private baseUrl: string = '') {
     this.routeParams = {};
@@ -60,7 +61,7 @@ export default class UrlBuilder {
     const route = keys.reduce((acc: string, key: string) => {
       return acc.replace(`{${key}}`, this.routeParams[key])
     }, this.baseUrl);
-    if (templateRegEx.test(route)) {
+    if (UrlBuilder.templateRegEx.test(route)) {
       throw new MissingRouteParamsError(`Route still contains template params: ${route}`);
     }
     return route;
